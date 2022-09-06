@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,8 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () {
     return view('auth/login');
 });
+
+
 
 Route::post('login', [UserController::class, 'login_action'])->name('login.action');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
