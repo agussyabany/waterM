@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeviceController;
 
 
 /*
@@ -24,4 +25,5 @@ Route::get('/', function () {
 
 Route::post('login', [UserController::class, 'login_action'])->name('login.action');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('device', [DeviceController::class, 'index'])->name('device');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');

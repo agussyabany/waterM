@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WaterMeter extends Model
+class Device extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
-
-    protected $table="water_meter";
+    protected $table = 'device';
+    protected $primaryKey = 'id_device';
 }

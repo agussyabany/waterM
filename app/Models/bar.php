@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class bar extends Model
 {
-    protected $table = 'bar';
+    protected $table = 'water_meter';
     protected $primaryKey = 'id';
     use HasFactory;
 }

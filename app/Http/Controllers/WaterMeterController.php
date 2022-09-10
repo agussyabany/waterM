@@ -21,7 +21,8 @@ class WaterMeterController extends Controller
 
             $dataSave=[
                 'flow'=> $flow,
-                'kubikasi' => $wm
+                'kubikasi' => $wm,
+                'id_dev' => 1
             ];
 
             WaterMeter::create($dataSave);

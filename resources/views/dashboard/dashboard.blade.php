@@ -13,16 +13,16 @@
 
 @section('content')
 <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
+<!-- Small boxes (Stat box) -->
         <div class="row">
+        @foreach ($wm as $key => $item)
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-default border border-primary">
               <div class="inner">
                
-                <h3><sup style="font-size: 20px">{{ $kubik }}</sup></h3>
-               
-                <p>Nama Pelanggan 1<br>Alamat<br>GOL</p>Meter Kini : 2223<br>Meter Lalu : 2209
+                <h3><sup style="font-size: 20px"></sup>{{ round($item -> kubikasi + $item -> m_cutOff) }}</h3>
+                <p>Nama Pelanggan : {{ $item -> nama }}<br>Alamat : {{ $item -> alamat }}<br>GOL : {{ $item -> gol }}<br><H4>Debit = <strong>{{ $item -> flow }}</strong> L/m</H4>
               </div>
               <div class="icon">
                 <i class="ion ion-ios-speedometer">m3</i>
@@ -30,56 +30,10 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-              <h3><sup style="font-size: 20px">3000</sup></h3>
-
-
-                <p>Nama Pelanggan 2<br>Alamat<br>GOL</p>Meter Kini : 2223<br>Meter Lalu : 2209
-              </div>
-              <div class="icon">
-                <i class="ion ion-ios-speedometer">m3</i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-              <h3><sup style="font-size: 20px">3000</sup></h3>
-
-
-                <p>Nama Pelanggan 3<br>Alamat<br>GOL</p>Meter Kini : 2223<br>Meter Lalu : 2209
-              </div>
-              <div class="icon">
-                <i class="ion ion-ios-speedometer">m3</i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-              <h3><sup style="font-size: 20px">3000</sup></h3>
-
-
-                <p>Nama Pelanggan 4<br>Alamat<br>GOL</p>Meter Kini : 2223<br>Meter Lalu : 2209
-              </div>
-              <div class="icon">
-                <i class="ion ion-ios-speedometer">m3</i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
+          @endforeach
+       
         </div>
+   
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">

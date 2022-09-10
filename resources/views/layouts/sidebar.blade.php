@@ -57,10 +57,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('device') }}" class="nav-link">
             <i class="fas fa-boxes"></i>
               <p>
-                Data Logger
+                Data Device
                 <span class="badge badge-danger right"></span>
               </p>
             </a>
