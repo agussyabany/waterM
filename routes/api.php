@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/water-meter', [WaterMeterController::class, 'store']);
+Route::get('/water-kubikasi', [WaterMeterController::class, 'get_diff']);
