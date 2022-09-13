@@ -21,69 +21,37 @@
 @section('content')
 <div class="container-fluid">
 <!-- Small boxes (Stat box) -->
-        <div class="card row">
-        <section class=" col-lg-6 connectedSortable">
-        <p>Laravel 9 ChartJS Chart Example - ItSolutionStuff.com</p>
-          <canvas id="myChart" height="100px"></canvas>
-
-        </section>
-        
-
-        </div>
-   
-        <!-- /.row -->
-        <!-- Main row -->
+<section class=" col-lg-12 connectedSortable">
         <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                   </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                  </div>
-                </div>
-              </div><!-- /.card-body -->
+        @foreach ($wm as $key => $item)
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary border border-primary">
+              <div class="inner">
+               
+                <h3><sup style="font-size: 20px"></sup>3126862</h3>
+                <p><strong> Nama  :</strong> {{ $item -> nama }}<br> <strong> Alamat :</strong> {{ $item -> alamat }}<br> <strong> GOL :</strong> {{ $item -> gol }}<br><H4>Meter : <strong> {{ round(($item -> kubikasi / 1000) + $item -> m_cutOff) }}</strong><br>Pakai : <strong> {{ round($item->kubikasi / 1000) }}</strong> m3 <br>Debit : <strong>{{ $item -> flow }}</strong> L/m</H4>
+              </div>
+              <div class="icon">
+                <i class="ion ion-ios-speedometer">m3</i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <!-- /.card -->
-
-            <!-- DIRECT CHAT -->
-           
-            <!--/.direct-chat -->
-
-            <!-- TO DO List -->
-            
-            <!-- /.card -->
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          </div>
+          @endforeach
          
-          <!-- right col -->
+          <div class="col-lg-8 ">
+            <!-- small box -->
+            <div class="card col-lg-12 col-12 border border-success">
+              
+            <canvas id="myChart" height="258px"></canvas>
+              
+            </div>
+          </div>
         </div>
-        <!-- /.row (main row) -->
+  </section>
       </div>
+    
 @endsection
 
 @push('scripts')
@@ -97,23 +65,25 @@
 			var data = {
 				labels : [
 					<?php 
-          foreach ($tanggal as $tgl) 
+                foreach ($tanggal as $tgl) 
                 {
-               
-                   
-                    echo '"'.$tgl->created_at.'",' ;
-                } ?>
+                  echo '"'.$tgl->created_at.'",' ;
+                } 
+                
+              ?>
 				],
 				datasets : [{
-					label : "Kubikasi",
+					label : "DEBIT",
+          fill : true,
+          backgroundColor : "rgba(52, 231, 43, .3)",
+          borderColor : "rgba(52,231,43, 1)",
 					data : [
 						<?php 
-            foreach ($vol as $lit) {
-
-             
-              echo $lit->kubikasi.',' ;
- 
-          } ?>
+              foreach ($flow as $lit) 
+              {
+                echo $lit->flow.',' ;
+              } 
+            ?>
 					]
 				}]
 
@@ -129,7 +99,7 @@
 			//cetak grafik kedalam canvas
 			var myLineChart = Chart.Line(canvas, {
 				data : data,
-				option : option
+				options : option
 			}) ;
 
 
